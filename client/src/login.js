@@ -21,11 +21,14 @@ $form.addEventListener("submit", async (e) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(entries),
+    credentials: "include"
   }).then((response) => {
     if (response.ok) {
+      window.location.href('../orders.html')
       // ! REDIRIGIR AL USUARIO A LA PÁGINA PRINCIPAL
     } else {
       // ! MOSTRAR UN MENSAJE DE ERROR AL USUARIO
+      alert("Error al iniciar sesion")
     }
   });
 });

@@ -1,3 +1,4 @@
+import { dbUser } from "../db/db.js";
 import { createJwt } from "../helpers/createJwt.js";
 import { createUser, getUserByCredentials } from "../models/user.model.js";
 
@@ -22,7 +23,10 @@ export const signInCtrl = async (req, res) => {
 };
 
 export const signUpCtrl = async (req, res) => {
+  const userId = +req.params.id;
   try {
+    const iniciarSesion = await dbUser.user.find((user)=>user.id===userId)
+    return iniciarSesion
     // ! Completar la función signUpCtrl
   } catch (error) {
     res.status(500).json({ message: error.message });
